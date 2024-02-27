@@ -1,9 +1,12 @@
 package com.visperas.rolito.block6.p1.budget_tracking.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import com.visperas.rolito.block6.p1.budget_tracking.R
@@ -15,14 +18,27 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Registration : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        val registrationUsername: EditText = findViewById(R.id.registration_username)
-        val registrationEmail: EditText = findViewById(R.id.registration_email)
-        val registrationPassword: EditText = findViewById(R.id.registration_password)
+        val registrationUsername: EditText = findViewById(R.id.registration_email)
+        val registrationEmail: EditText = findViewById(R.id.registration_password1)
+        val registrationPassword: EditText = findViewById(R.id.registration_password2)
         val registrationButton: Button = findViewById(R.id.registrationButton)
+        val showPasswordCheckBox1: CheckBox = findViewById(R.id.showPasswordCheckBoxx)
+
+        showPasswordCheckBox1.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                registrationEmail.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                registrationPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                registrationEmail.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                registrationPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+        }
 
         registrationButton.setOnClickListener{
 

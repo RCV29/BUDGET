@@ -1,10 +1,14 @@
 package com.visperas.rolito.block6.p1.budget_tracking.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
+import android.widget.CheckBox
+import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.Toast
 import com.visperas.rolito.block6.p1.budget_tracking.R
@@ -16,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +29,16 @@ class MainActivity : AppCompatActivity() {
         val loginButton: Button = findViewById(R.id.loginButton)
         val loginEmail: EditText = findViewById(R.id.login_email)
         val loginPassword: EditText = findViewById(R.id.login_password)
+        val showPasswordCheckBox: CheckBox = findViewById(R.id.showPasswordCheckBox)
+
+        showPasswordCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                loginPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                loginPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+        }
 
         registrationText.setOnClickListener {
             startActivity(Intent(this@MainActivity,Registration::class.java))

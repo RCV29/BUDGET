@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.visperas.rolito.block6.p1.budget_tracking"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.visperas.rolito.block6.p1.budget_tracking"
