@@ -8,7 +8,6 @@ import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.CheckBox
-import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.Toast
 import com.visperas.rolito.block6.p1.budget_tracking.R
@@ -20,6 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +31,8 @@ class MainActivity : AppCompatActivity() {
         val loginPassword: EditText = findViewById(R.id.login_password)
         val showPasswordCheckBox: CheckBox = findViewById(R.id.showPasswordCheckBox)
 
-        showPasswordCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                loginPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            } else {
-                loginPassword.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            }
-        }
-
         registrationText.setOnClickListener {
-            startActivity(Intent(this@MainActivity,Registration::class.java))
+            startActivity(Intent(this@MainActivity, Registration::class.java))
         }
 
         loginButton.setOnClickListener {
@@ -49,41 +40,47 @@ class MainActivity : AppCompatActivity() {
             val email = loginEmail.text.toString().trim()
             val password = loginPassword.text.toString().trim()
 
-            if(email.isEmpty()){
+            if (email.isEmpty()) {
                 loginEmail.error = "Email required"
                 loginEmail.requestFocus()
                 return@setOnClickListener
             }
 
-            if(password.isEmpty()){
+            if (password.isEmpty()) {
                 loginPassword.error = "Password required"
                 loginPassword.requestFocus()
                 return@setOnClickListener
             }
 
             RetrofitClient.instance.login(email, password)
-                .enqueue(object: Callback<LoginResponse>{
+                .enqueue(object : Callback<LoginResponse> {
                     override fun onResponse(
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
                         if ((response.body()?.error ?: false) == false) {
 
-                            SharedPrefManager.getInstance(applicationContext).saveUser(response.body()?.user!!)
+                            SharedPrefManager.getInstance(applicationContext)
+                                .saveUser(response.body()?.user!!)
 
-                            val intent = Intent(applicationContext,Dashboard::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            val intent = Intent(applicationContext, Dashboard::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                             startActivity(intent)
 
 
-                        }else{
-                            Toast.makeText(applicationContext,response.body()?.message,Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                response.body()?.message,
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
 
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext,t.message,Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
                 })
@@ -94,8 +91,8 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if(SharedPrefManager.getInstance(this).isLoggedIn){
-            val intent = Intent(applicationContext,Dashboard::class.java)
+        if (SharedPrefManager.getInstance(this).isLoggedIn) {
+            val intent = Intent(applicationContext, Dashboard::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
             startActivity(intent)
