@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt") // Apply kapt plugin
+    kotlin("kapt")
 }
 
 android {
