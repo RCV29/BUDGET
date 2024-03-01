@@ -58,7 +58,7 @@
                 android:id="@+id/showPasswordCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Show Password"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"

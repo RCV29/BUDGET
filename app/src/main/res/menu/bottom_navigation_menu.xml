@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group>
         <item
-            android:id="@+id/navigation_profile"
+            android:id="@+id/navigation_expenses"
             android:icon="@drawable/baseline_person_24"
-            android:title="Profile" />
+            android:title="Expenses" />
         <item
-            android:id="@+id/navigation_home"
+            android:id="@+id/navigation_dashboard"
             android:icon="@drawable/baseline_home_24"
-            android:title="Home" />
+            android:title="Dashboard" />
         <item
-            android:id="@+id/navigation_settings"
+            android:id="@+id/navigation_savings"
             android:icon="@drawable/baseline_settings_24"
-            android:title="Settings" />
+            android:title="Savings" />
     </group>
 </menu>

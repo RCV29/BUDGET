@@ -40,7 +40,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures {
+    buildFeatures{
         viewBinding = true
         compose = true
     }
@@ -52,6 +52,8 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+
 }
 
 dependencies {
