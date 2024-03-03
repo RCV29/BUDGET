@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/textViewDescriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDescriptionLabel"
+        android:layout_marginTop="8dp"
+        android:hint="Enter description"/>
+
+    <!-- Amount -->
+    <TextView
+        android:id="@+id/textViewAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@id/editTextDescription"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAmountLabel"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:hint="Enter amount"/>
+
+    <!-- Date -->
+    <TextView
+        android:id="@+id/textViewDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@id/editTextAmount"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDateLabel"
+        android:layout_marginTop="8dp"
+        android:hint="Enter date"/>
+
+    <!-- Category -->
+    <TextView
+        android:id="@+id/textViewCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@id/editTextDate"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCategoryLabel"
+        android:layout_marginTop="8dp"
+        android:hint="Enter category"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCategory"
+        android:layout_marginTop="24dp"
+        android:text="Save"/>
+
+</RelativeLayout>
