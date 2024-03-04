@@ -44,7 +44,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
         compose = true
     }
@@ -57,9 +57,7 @@ android {
         }
     }
 
-
 }
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -92,7 +90,4 @@ dependencies {
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
     implementation("androidx.databinding:databinding-runtime:4.1.1")
-
-
-
 }
