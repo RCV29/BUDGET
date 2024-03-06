@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fieldAmount"
                 android:layout_marginBottom="15dp"
-                android:hint="Email"
+                android:hint="Username"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="3dp"
@@ -83,7 +83,6 @@
                     android:id="@+id/registrationPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
