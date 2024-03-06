@@ -2,17 +2,15 @@ package com.visperas.rolito.block6.p1.budget_tracking.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.JsonReader
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.visperas.rolito.block6.p1.budget_tracking.api.RetrofitClient
 import com.visperas.rolito.block6.p1.budget_tracking.databinding.ActivityRegistrationBinding
-import com.visperas.rolito.block6.p1.budget_tracking.models.DefaultResponse
+import com.visperas.rolito.block6.p1.budget_tracking.models.RegisterRequest
+import com.visperas.rolito.block6.p1.budget_tracking.models.RegisterResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.StringReader
 
 class Registration : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
@@ -46,52 +44,35 @@ class Registration : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val RegistrationDataJson =
-                "{\"name\":\"$name\",\"email\":\"$email\",\"password\":\"$password\"}"
+            val registerRequest = RegisterRequest(name,email, password)
 
+            RetrofitClient.instance.registration(registerRequest)
+                .enqueue(object : Callback<RegisterResponse>{
+                    override fun onResponse(
+                        call: Call<RegisterResponse>,
+                        response: Response<RegisterResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            Log.e(
+                                "MyTag",
+                                "Registration Success: $call"
+                            )
 
-            try {
-                val reader = JsonReader(StringReader(RegistrationDataJson))
-                reader.isLenient = true
-                reader.beginObject()
-                reader.close()
-                RetrofitClient.instance.registrationUser(
-                    name,
-                    email,
-                    password
-                )
-                    .enqueue(object : Callback<DefaultResponse> {
-                        override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this@Registration, MainActivity::class.java))
+                            finish()
+                        } else {
+                            Log.e("MyTag", "Registration Failed: $call || ${response.raw()}")
+
                         }
+                    }
 
-                        override fun onResponse(
-                            call: Call<DefaultResponse>,
-                            response: Response<DefaultResponse>
-                        ) {
-                            if (response.isSuccessful && response.body() != null) {
-                                Toast.makeText(applicationContext, response.body()!!.message, Toast.LENGTH_LONG).show()
-                                val intent = Intent(this@Registration, MainActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                startActivity(intent)
-                            } else {
-                                val errorMessage: String = try {
-                                    response.errorBody()?.string()
-                                        ?: "Failed to get a valid response. Response code: ${response.code()}"
-                                } catch (e: Exception) {
-                                    "Failed to get a valid response. Response code: ${response.code()}"
-                                }
-                                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_LONG)
-                                    .show()
-                                Log.e("API_RESPONSE", errorMessage)
-                            }
-                        }
-                    })
-            } catch (e: Exception) {
-                Toast.makeText(this, "Error parsing JSON", Toast.LENGTH_SHORT).show()
-                e.printStackTrace()
-            }
+                    override fun onFailure(
+                        call: Call<RegisterResponse>,
+                        t: Throwable
+                    ) {
+                        Log.e("MyTag", "Network Failed: $call")
+                    }
+                })
         }
     }
 }
