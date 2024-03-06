@@ -24,6 +24,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+
             <EditText
                 android:id="@+id/loginEmail"
                 android:layout_width="match_parent"

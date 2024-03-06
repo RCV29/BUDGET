@@ -21,6 +21,6 @@ interface Api {
       @Field("password") password:String
    ):Call<DefaultResponse>
 
-   @POST("/api/people")
+   @POST("/api/login-retrofit")
    fun login(@Body loginRequest: LoginRequest): Call<LoginResponse>
 }
