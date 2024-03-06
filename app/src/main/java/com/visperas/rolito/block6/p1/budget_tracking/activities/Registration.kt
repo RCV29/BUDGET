@@ -70,11 +70,7 @@ class Registration : AppCompatActivity() {
                             response: Response<DefaultResponse>
                         ) {
                             if (response.isSuccessful && response.body() != null) {
-                                Toast.makeText(
-                                    applicationContext,
-                                    response.body()!!.message,
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Toast.makeText(applicationContext, response.body()!!.message, Toast.LENGTH_LONG).show()
                                 val intent = Intent(this@Registration, MainActivity::class.java)
                                 intent.flags =
                                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
