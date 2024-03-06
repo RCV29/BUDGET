@@ -1,6 +1,5 @@
 package com.visperas.rolito.block6.p1.budget_tracking.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -12,15 +11,20 @@ import com.visperas.rolito.block6.p1.budget_tracking.R
 
 class AddExpenses : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_expenses)
 
-        val descriptionEditText = findViewById<EditText>(R.id.editDescription)
-        val amountEditText = findViewById<EditText>(R.id.editAmount)
-        val dateEditText = findViewById<EditText>(R.id.editDate)
+        val descriptionEdit = findViewById<EditText>(R.id.editDescription)
+        val amountEdit = findViewById<EditText>(R.id.editAmount)
+        val dateEdit = findViewById<EditText>(R.id.editDate)
         val categorySpinner = findViewById<Spinner>(R.id.categorySpinner)
+
         val addButton = findViewById<Button>(R.id.addButton)
+
+
+
 
         // Populate the spinner with categories
         val categories = arrayOf(
@@ -31,10 +35,11 @@ class AddExpenses : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         categorySpinner.adapter = adapter
 
+
         addButton.setOnClickListener {
-            val description = descriptionEditText.text.toString()
-            val amount = amountEditText.text.toString()
-            val date = dateEditText.text.toString()
+            val description = descriptionEdit.text.toString()
+            val amount = amountEdit.text.toString()
+            val date = dateEdit.text.toString()
             val category = categorySpinner.selectedItem.toString()
 
             val intent = Intent()
@@ -42,7 +47,7 @@ class AddExpenses : AppCompatActivity() {
             intent.putExtra("amount", amount)
             intent.putExtra("date", date)
             intent.putExtra("category", category)
-            setResult(Activity.RESULT_OK, intent)
+            setResult(RESULT_OK, intent)
             finish()
         }
     }

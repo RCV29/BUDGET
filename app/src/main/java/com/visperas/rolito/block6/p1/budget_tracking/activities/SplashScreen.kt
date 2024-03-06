@@ -12,7 +12,7 @@ import com.visperas.rolito.block6.p1.budget_tracking.R
 
 
 class SplashScreen : AppCompatActivity() {
-    private val SPLASH_DISPLAY_LENGTH = 2000 // 2 seconds
+    private val SPLASH_DISPLAY_LENGTH = 4000 // 2 seconds
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {

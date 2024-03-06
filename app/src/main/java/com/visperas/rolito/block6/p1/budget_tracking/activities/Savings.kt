@@ -11,54 +11,53 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.visperas.rolito.block6.p1.budget_tracking.R
 
-class Expenses : AppCompatActivity() {
+class Savings : AppCompatActivity() {
 
-    private lateinit var adapter: ExpenseAdapter
+    private lateinit var adapter: SavingsAdapter
     private val dataList = mutableListOf<String>()
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var fabAdd: FloatingActionButton
+    private lateinit var recyclerView2: RecyclerView
+    private lateinit var fabAdd2: FloatingActionButton
 
     companion object {
-        private const val ADD_EXPENSE_REQUEST = 100
+        private const val ADD_SAVINGS_REQUEST = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_expenses)
+        setContentView(R.layout.activity_savings)
 
         // Initialize views
-        recyclerView = findViewById(R.id.recyclerView)
-        fabAdd = findViewById(R.id.fabAdd)
+        recyclerView2 = findViewById(R.id.recyclerView1)
+        fabAdd2 = findViewById(R.id.fabAdd1)
 
         // Initialize RecyclerView adapter and layout manager
-        adapter = ExpenseAdapter(dataList)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = SavingsAdapter(dataList)
+        recyclerView2.adapter = adapter
+        recyclerView2.layoutManager = LinearLayoutManager(this)
 
-        fabAdd.setOnClickListener {
-            startActivityForResult(Intent(this@Expenses, AddExpenses::class.java), ADD_EXPENSE_REQUEST)
+        fabAdd2.setOnClickListener {
+            startActivityForResult(Intent(this@Savings, AddSavings::class.java), ADD_SAVINGS_REQUEST)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_EXPENSE_REQUEST && resultCode == Activity.RESULT_OK) {
+        if (requestCode == ADD_SAVINGS_REQUEST && resultCode == Activity.RESULT_OK) {
             val description = data?.getStringExtra("description")
             val amount = data?.getStringExtra("amount")
             val date = data?.getStringExtra("date")
-            val category = data?.getStringExtra("category")
 
             // Create a CardView based on the received data
-            val cardView = createCardView(description, amount, date, category)
+            val cardView = createCardView(description, amount, date)
 
             // Add the CardView to the RecyclerView
-            dataList.add("$description - $amount - $date - $category")
+            dataList.add("$description - $amount - $date")
             adapter.notifyDataSetChanged()
         }
     }
 
-    private fun createCardView(description: String?, amount: String?, date: String?, category: String?): CardView {
+    private fun createCardView(description: String?, amount: String?, date: String?): CardView {
         val cardView = CardView(this)
         // Customize the CardView as needed
 
@@ -73,14 +72,10 @@ class Expenses : AppCompatActivity() {
         val textViewDate = TextView(this)
         textViewDate.text = "Date: $date"
 
-        val textViewCategory = TextView(this)
-        textViewCategory.text = "Category: $category"
-
         // Add TextViews to the CardView
         cardView.addView(textViewDescription)
         cardView.addView(textViewAmount)
         cardView.addView(textViewDate)
-        cardView.addView(textViewCategory)
 
         return cardView
     }

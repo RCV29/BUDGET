@@ -56,7 +56,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
 }
 dependencies {
 
@@ -87,13 +86,15 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.12.0")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     kapt("com.github.bumptech.glide:compiler:4.12.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
     implementation("androidx.core:core-ktx:1.6.0")
-    implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
     implementation("androidx.databinding:databinding-runtime:4.1.1")
+    implementation("com.google.android.material:material:1.5.0")
+
 }
