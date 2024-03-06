@@ -35,7 +35,7 @@
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="3dp"
                 app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/baseline_lock_24"
+                app:startIconDrawable="@drawable/baseline_person_24"
                 app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -55,7 +55,7 @@
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidth="3dp"
                 app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/baseline_lock_24"
+                app:startIconDrawable="@drawable/baseline_email_24"
                 app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
