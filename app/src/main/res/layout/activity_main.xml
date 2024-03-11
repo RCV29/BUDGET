@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_screen"
-    android:gravity="center"
+    android:background="@drawable/login_bg"
     android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
         <LinearLayout
@@ -76,10 +77,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="15dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/yellow_orange"
                 android:text="Login"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/registrationText"
@@ -97,4 +99,5 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

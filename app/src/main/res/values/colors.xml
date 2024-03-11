@@ -12,7 +12,9 @@
     <color name="red">#FD3C4A</color>
     <color name="purple">#B18AFF</color>
     <color name="add">#9062EC</color>
-
-
-
+    <color name="light_blue">#3b9ebf</color>
+    <color name="yellow_orange">#FCC03E</color>
+    <color name="light_yellow">#FFFAE3</color>
+    <color name="dark_yellow">#FD871B</color>
+    <color name="light_yellow_100">#FEE3A1</color>
 </resources>

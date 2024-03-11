@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".activities.AddExpenses"
-    android:layout_margin="16dp">
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    tools:context=".activities.AddExpenses">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fieldDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:hint="Description">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -25,7 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fieldDescription"
-        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:hint="Amount">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -39,7 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fieldAmount"
-        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:hint="Date">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,20 +62,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fieldDate"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/spinner_border"
         android:minHeight="48dp" />
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_below="@id/categorySpinner"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"/>
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/yellow_orange"
+        android:text="Add"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 </RelativeLayout>
