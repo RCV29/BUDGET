@@ -36,10 +36,5 @@
             android:layout_height="wrap_content"
             android:text="Date" />
 
-        <TextView
-            android:id="@+id/textViewCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

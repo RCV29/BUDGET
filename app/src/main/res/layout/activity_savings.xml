@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AddSavings">
+    tools:context=".activities.AddSavings"
+    android:background="@drawable/expenses_bg">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"

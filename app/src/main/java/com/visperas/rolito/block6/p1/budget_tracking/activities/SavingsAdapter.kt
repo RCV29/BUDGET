@@ -15,7 +15,6 @@ class SavingsAdapter(private val dataList: MutableList<String>) :
     // ViewHolder class with views
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cardView2: CardView = itemView.findViewById(R.id.cardView1)
-        val textViewDescription2: TextView = itemView.findViewById(R.id.textViewDescription1)
         val textViewAmount2: TextView = itemView.findViewById(R.id.textViewAmount1)
         val textViewDate2: TextView = itemView.findViewById(R.id.textViewDate1)
     }
@@ -31,9 +30,8 @@ class SavingsAdapter(private val dataList: MutableList<String>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val savings = dataList[position].split(" - ")
 
-        holder.textViewDescription2.text = "Description: ${savings[0]}"
-        holder.textViewAmount2.text = "Amount: ${savings[1]}"
-        holder.textViewDate2.text = "Date: ${savings[2]}"
+        holder.textViewAmount2.text = "Amount: ${savings[0]}"
+        holder.textViewDate2.text = "Date: ${savings[1]}"
 
         // Set click listener for the card view
         holder.cardView2.setOnClickListener {

@@ -18,7 +18,6 @@ class ExpenseAdapter(private val dataList: MutableList<String>) :
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
         val textViewAmount: TextView = itemView.findViewById(R.id.textViewAmount)
         val textViewDate: TextView = itemView.findViewById(R.id.textViewDate)
-        val textViewCategory: TextView = itemView.findViewById(R.id.textViewCategory)
     }
 
     // onCreateViewHolder to inflate the layout
@@ -35,7 +34,6 @@ class ExpenseAdapter(private val dataList: MutableList<String>) :
         holder.textViewDescription.text = "Description: ${expense[0]}"
         holder.textViewAmount.text = "Amount: ${expense[1]}"
         holder.textViewDate.text = "Date: ${expense[2]}"
-        holder.textViewCategory.text = "Category: ${expense[3]}"
 
         // Set click listener for the card view
         holder.cardView.setOnClickListener {
@@ -45,17 +43,11 @@ class ExpenseAdapter(private val dataList: MutableList<String>) :
             intent.putExtra("description", expense[0])
             intent.putExtra("amount", expense[1])
             intent.putExtra("date", expense[2])
-            intent.putExtra("category", expense[3])
             context.startActivity(intent)
         }
 
         // Set long click listener for the card view
-        holder.cardView.setOnLongClickListener {
-            // Handle long click for delete operation
-            dataList.removeAt(position)
-            notifyItemRemoved(position)
-            true
-        }
+
     }
 
     // getItemCount to return the size of the data list

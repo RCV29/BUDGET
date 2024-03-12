@@ -40,43 +40,7 @@ class Savings : AppCompatActivity() {
             startActivityForResult(Intent(this@Savings, AddSavings::class.java), ADD_SAVINGS_REQUEST)
         }
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_SAVINGS_REQUEST && resultCode == Activity.RESULT_OK) {
-            val description = data?.getStringExtra("description")
-            val amount = data?.getStringExtra("amount")
-            val date = data?.getStringExtra("date")
-
-            // Create a CardView based on the received data
-            val cardView = createCardView(description, amount, date)
-
-            // Add the CardView to the RecyclerView
-            dataList.add("$description - $amount - $date")
-            adapter.notifyDataSetChanged()
-        }
-    }
-
-    private fun createCardView(description: String?, amount: String?, date: String?): CardView {
-        val cardView = CardView(this)
-        // Customize the CardView as needed
-
-
-        // Create TextViews to display the data
-        val textViewDescription = TextView(this)
-        textViewDescription.text = "Description: $description"
-
-        val textViewAmount = TextView(this)
-        textViewAmount.text = "Amount: $amount"
-
-        val textViewDate = TextView(this)
-        textViewDate.text = "Date: $date"
-
-        // Add TextViews to the CardView
-        cardView.addView(textViewDescription)
-        cardView.addView(textViewAmount)
-        cardView.addView(textViewDate)
-
-        return cardView
-    }
 }
+
+
+

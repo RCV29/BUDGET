@@ -40,48 +40,4 @@ class Expenses : AppCompatActivity() {
             startActivityForResult(Intent(this@Expenses, AddExpenses::class.java), ADD_EXPENSE_REQUEST)
         }
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_EXPENSE_REQUEST && resultCode == Activity.RESULT_OK) {
-            val description = data?.getStringExtra("description")
-            val amount = data?.getStringExtra("amount")
-            val date = data?.getStringExtra("date")
-            val category = data?.getStringExtra("category")
-
-            // Create a CardView based on the received data
-            val cardView = createCardView(description, amount, date, category)
-
-            // Add the CardView to the RecyclerView
-            dataList.add("$description - $amount - $date - $category")
-            adapter.notifyDataSetChanged()
-        }
-    }
-
-    private fun createCardView(description: String?, amount: String?, date: String?, category: String?): CardView {
-        val cardView = CardView(this)
-        // Customize the CardView as needed
-
-
-        // Create TextViews to display the data
-        val textViewDescription = TextView(this)
-        textViewDescription.text = "Description: $description"
-
-        val textViewAmount = TextView(this)
-        textViewAmount.text = "Amount: $amount"
-
-        val textViewDate = TextView(this)
-        textViewDate.text = "Date: $date"
-
-        val textViewCategory = TextView(this)
-        textViewCategory.text = "Category: $category"
-
-        // Add TextViews to the CardView
-        cardView.addView(textViewDescription)
-        cardView.addView(textViewAmount)
-        cardView.addView(textViewDate)
-        cardView.addView(textViewCategory)
-
-        return cardView
-    }
 }
