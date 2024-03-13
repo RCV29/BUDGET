@@ -1,5 +1,6 @@
 package com.visperas.rolito.block6.p1.budget_tracking.api
 
+import com.visperas.rolito.block6.p1.budget_tracking.models.DefaultResponse
 import com.visperas.rolito.block6.p1.budget_tracking.models.Expense
 import com.visperas.rolito.block6.p1.budget_tracking.models.ExpenseResponse
 import com.visperas.rolito.block6.p1.budget_tracking.models.LoginRequest
@@ -26,7 +27,7 @@ interface Api {
    fun getExpense(@Header("Authorization")token: String): Call<ExpenseResponse>
 
    @POST("/api/post-expense")
-   fun postExpense(@Body expense: Expense): Call<Void>
+   fun postExpense(@Header("Authorization") token: String, @Body expense: Expense): Call<DefaultResponse>
 
    @PUT("/update-expense")
    fun updateExpense(@Body expense: Expense): Call<Void>

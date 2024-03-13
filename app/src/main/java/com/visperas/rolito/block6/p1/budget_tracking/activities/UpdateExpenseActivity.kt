@@ -14,7 +14,6 @@ class UpdateExpenseActivity : AppCompatActivity() {
         val description = intent.getStringExtra("description")
         val amount = intent.getStringExtra("amount")
         val date = intent.getStringExtra("date")
-        val category = intent.getStringExtra("category")
 
         // Populate UI fields with retrieved data
         // Implement update functionality here
