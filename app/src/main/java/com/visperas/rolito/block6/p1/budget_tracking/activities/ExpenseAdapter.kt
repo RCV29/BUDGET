@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.visperas.rolito.block6.p1.budget_tracking.R
+import com.visperas.rolito.block6.p1.budget_tracking.models.Expense
 
-class ExpenseAdapter(private val dataList: MutableList<String>) :
+class ExpenseAdapter(private val dataList: MutableList<Expense>) :
     RecyclerView.Adapter<ExpenseAdapter.MyViewHolder>() {
 
     // ViewHolder class with views
@@ -29,25 +30,28 @@ class ExpenseAdapter(private val dataList: MutableList<String>) :
 
     // onBindViewHolder to bind data to views
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val expense = dataList[position].split(" - ")
+        val expense = dataList[position]
 
-        holder.textViewDescription.text = "Description: ${expense[0]}"
-        holder.textViewAmount.text = "Amount: ${expense[1]}"
-        holder.textViewDate.text = "Date: ${expense[2]}"
+        holder.textViewDescription.text = "Description: ${expense.exp}"
+        holder.textViewAmount.text = "Amount: ${expense.price}"
+        holder.textViewDate.text = "Date: ${expense.date}"
 
         // Set click listener for the card view
         holder.cardView.setOnClickListener {
             // Handle click for update operation
             val context = holder.itemView.context
             val intent = Intent(context, UpdateExpenseActivity::class.java)
-            intent.putExtra("description", expense[0])
-            intent.putExtra("amount", expense[1])
-            intent.putExtra("date", expense[2])
+            intent.putExtra("description", expense.exp)
+            intent.putExtra("amount", expense.price)
+            intent.putExtra("date", expense.date)
             context.startActivity(intent)
         }
 
         // Set long click listener for the card view
-
+        holder.cardView.setOnLongClickListener {
+            // Handle long click if needed
+            true
+        }
     }
 
     // getItemCount to return the size of the data list
@@ -55,4 +59,3 @@ class ExpenseAdapter(private val dataList: MutableList<String>) :
         return dataList.size
     }
 }
-
