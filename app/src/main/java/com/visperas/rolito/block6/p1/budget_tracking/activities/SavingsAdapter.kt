@@ -8,15 +8,16 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.visperas.rolito.block6.p1.budget_tracking.R
+import com.visperas.rolito.block6.p1.budget_tracking.models.Saving
 
-class SavingsAdapter(private val dataList: MutableList<String>) :
+class SavingsAdapter(private val dataList: MutableList<Saving>) :
     RecyclerView.Adapter<SavingsAdapter.MyViewHolder>() {
 
     // ViewHolder class with views
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardView2: CardView = itemView.findViewById(R.id.cardView1)
-        val textViewAmount2: TextView = itemView.findViewById(R.id.textViewAmount1)
-        val textViewDate2: TextView = itemView.findViewById(R.id.textViewDate1)
+        val cardView: CardView = itemView.findViewById(R.id.cardView)
+        val textViewAmount: TextView = itemView.findViewById(R.id.textViewAmount)
+        val textViewDate: TextView = itemView.findViewById(R.id.textViewDate)
     }
 
     // onCreateViewHolder to inflate the layout
@@ -28,27 +29,24 @@ class SavingsAdapter(private val dataList: MutableList<String>) :
 
     // onBindViewHolder to bind data to views
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val savings = dataList[position].split(" - ")
+        val saving = dataList[position]
 
-        holder.textViewAmount2.text = "Amount: ${savings[0]}"
-        holder.textViewDate2.text = "Date: ${savings[1]}"
+        holder.textViewAmount.text = "Amount: ${saving.amount}"
+        holder.textViewDate.text = "Date: ${saving.date}"
 
         // Set click listener for the card view
-        holder.cardView2.setOnClickListener {
+        holder.cardView.setOnClickListener {
             // Handle click for update operation
             val context = holder.itemView.context
-            val intent = Intent(context, UpdateExpenseActivity::class.java)
-            intent.putExtra("description", savings[0])
-            intent.putExtra("amount", savings[1])
-            intent.putExtra("date", savings[2])
+            val intent = Intent(context, UpdateSaving::class.java)
+            intent.putExtra("amount", saving.amount)
+            intent.putExtra("date", saving.date)
             context.startActivity(intent)
         }
 
         // Set long click listener for the card view
-        holder.cardView2.setOnLongClickListener {
-            // Handle long click for delete operation
-            dataList.removeAt(position)
-            notifyItemRemoved(position)
+        holder.cardView.setOnLongClickListener {
+            // Handle long click if needed
             true
         }
     }
@@ -58,4 +56,3 @@ class SavingsAdapter(private val dataList: MutableList<String>) :
         return dataList.size
     }
 }
-

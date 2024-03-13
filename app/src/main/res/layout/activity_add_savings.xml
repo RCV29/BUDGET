@@ -18,7 +18,7 @@
         android:hint="Amount">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAmount1"
+            android:id="@+id/editAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"/>
@@ -36,7 +36,7 @@
         android:hint="Pick a Date">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editDate1"
+            android:id="@+id/editDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -46,7 +46,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/addButton1"
+        android:id="@+id/addButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_below="@id/fieldDate"
