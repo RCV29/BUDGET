@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.visperas.rolito.block6.p1.budget_tracking.R
@@ -29,6 +30,11 @@ class AddExpenses : AppCompatActivity() {
         val amountEdit = findViewById<EditText>(R.id.editAmount)
         val dateEdit = findViewById<EditText>(R.id.editDate)
         val addButton = findViewById<Button>(R.id.addButton)
+        val toolBar = findViewById<ImageView>(R.id.left_icon)
+
+        toolBar.setOnClickListener {
+            onBackPressed()
+        }
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 

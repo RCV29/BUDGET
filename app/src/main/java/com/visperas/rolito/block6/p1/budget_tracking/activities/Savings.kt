@@ -4,11 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.visperas.rolito.block6.p1.budget_tracking.R
 import com.visperas.rolito.block6.p1.budget_tracking.api.RetrofitClient
 import com.visperas.rolito.block6.p1.budget_tracking.databinding.ActivitySavingsBinding
 import com.visperas.rolito.block6.p1.budget_tracking.models.Saving
@@ -27,10 +30,26 @@ class Savings : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
 
+    private val refreshHandler = Handler()
+    private val refreshInterval = 1000L
+
+    private val refreshRunnable = object : Runnable {
+        override fun run() {
+            loadSavings()
+            refreshHandler.postDelayed(this, refreshInterval)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivitySavingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val toolBar = findViewById<ImageView>(R.id.left_icon)
+
+        toolBar.setOnClickListener {
+            onBackPressed()
+        }
 
         // Initialize views
         recyclerView = binding.recyclerView
@@ -44,11 +63,17 @@ class Savings : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         // Load savings from the API
+        refreshHandler.postDelayed(refreshRunnable, refreshInterval)
         loadSavings()
 
         fabAdd.setOnClickListener {
             startActivity(Intent(this@Savings, AddSavings::class.java))
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Stop auto-refresh when activity is destroyed
+        refreshHandler.removeCallbacks(refreshRunnable)
     }
 
     private fun loadSavings() {

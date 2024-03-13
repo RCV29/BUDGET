@@ -3,7 +3,9 @@ package com.visperas.rolito.block6.p1.budget_tracking.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.visperas.rolito.block6.p1.budget_tracking.R
 import com.visperas.rolito.block6.p1.budget_tracking.api.RetrofitClient
 import com.visperas.rolito.block6.p1.budget_tracking.databinding.ActivityRegistrationBinding
 import com.visperas.rolito.block6.p1.budget_tracking.models.RegisterRequest
@@ -18,6 +20,12 @@ class Registration : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val toolBar = findViewById<ImageView>(R.id.left_icon)
+
+        toolBar.setOnClickListener {
+            onBackPressed()
+        }
 
 
         binding.registrationButton.setOnClickListener {

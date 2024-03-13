@@ -7,70 +7,82 @@
     android:background="@drawable/login_bg"
     tools:context=".activities.AddExpenses">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fieldDescription"
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Description">
+        android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fieldAmount"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fieldDescription"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Amount">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tool_bar">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fieldDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fieldAmount"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Date">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editDate"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fieldDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:cursorVisible="false"
-            android:focusableInTouchMode="false"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Description">
 
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/fieldDate"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/yellow_orange"
-        android:text="Add"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fieldAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fieldDescription"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Amount">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fieldDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fieldAmount"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/fieldDate"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/yellow_orange"
+            android:text="Add"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </RelativeLayout>
