@@ -41,7 +41,9 @@ class ExpenseAdapter(private val dataList: MutableList<Expense>) :
             // Handle click for update operation
             val context = holder.itemView.context
             val intent = Intent(context, UpdateExpenseActivity::class.java)
+            intent.putExtra("expenseId", expense.id) // Pass the expense id to UpdateExpenseActivity
             intent.putExtra("description", expense.exp)
+            intent.putExtra("user_id", expense.user_id)
             intent.putExtra("amount", expense.price)
             intent.putExtra("date", expense.date)
             context.startActivity(intent)

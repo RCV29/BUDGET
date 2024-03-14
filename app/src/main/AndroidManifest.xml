@@ -56,6 +56,11 @@
             android:name=".activities.AddSavings"
             android:exported="false"
             android:theme="@style/AppTheme" />
+        <!-- Declaration for UpdateExpenseActivity -->
+        <activity
+            android:name=".activities.UpdateExpenseActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

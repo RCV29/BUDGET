@@ -16,6 +16,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 
 interface Api {
@@ -31,8 +32,13 @@ interface Api {
    @POST("/api/post-expense")
    fun postExpense(@Header("Authorization") token: String, @Body expense: Expense): Call<DefaultResponse>
 
-   @PUT("/update-expense")
-   fun updateExpense(@Body expense: Expense): Call<Void>
+   @PUT("/api/update-expense/{expense}")
+   fun updateExpense(
+      @Header("Authorization") token: String, // Add Authorization header
+      @Path("expense") expenseId: Int,
+      @Body updatedExpense: Expense
+   ): Call<DefaultResponse>
+
 
    @DELETE("/delete-expense")
    fun deleteExpense(): Call<Void>
