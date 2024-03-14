@@ -39,7 +39,9 @@ class SavingsAdapter(private val dataList: MutableList<Saving>) :
             // Handle click for update operation
             val context = holder.itemView.context
             val intent = Intent(context, UpdateSaving::class.java)
+            intent.putExtra("savingId", saving.id) // Pass the expense id to UpdateExpenseActivity
             intent.putExtra("amount", saving.amount)
+            intent.putExtra("user_id", saving.user_id)
             intent.putExtra("date", saving.date)
             context.startActivity(intent)
         }

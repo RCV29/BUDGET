@@ -39,7 +39,6 @@ interface Api {
       @Body updatedExpense: Expense
    ): Call<DefaultResponse>
 
-
    @DELETE("/delete-expense")
    fun deleteExpense(): Call<Void>
 
@@ -48,5 +47,12 @@ interface Api {
 
    @POST("/api/post-saving")
    fun postSaving(@Header("Authorization") token: String, @Body saving: Saving): Call<DefaultResponse>
+
+   @PUT("/api/update-saving/{saving}")
+   fun updateSaving(
+      @Header("Authorization") token: String, // Add Authorization header
+      @Path("saving") savingId: Int,
+      @Body updatedSaving: Saving
+   ): Call<DefaultResponse>
 
 }
