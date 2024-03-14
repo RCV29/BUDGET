@@ -39,8 +39,11 @@ interface Api {
       @Body updatedExpense: Expense
    ): Call<DefaultResponse>
 
-   @DELETE("/delete-expense")
-   fun deleteExpense(): Call<Void>
+   @DELETE("/api/delete-expense/{expense}")
+   fun deleteExpense(
+      @Header("Authorization") authorization: String,
+      @Path("expense") expenseId: Int
+   ): Call<DefaultResponse>
 
    @GET("/api/get-saving")
    fun getSaving(@Header("Authorization")token: String): Call<SavingResponse>
@@ -54,5 +57,13 @@ interface Api {
       @Path("saving") savingId: Int,
       @Body updatedSaving: Saving
    ): Call<DefaultResponse>
+
+   @DELETE("/api/delete-saving/{saving}")
+   fun deleteSaving(
+      @Header("Authorization") authorization: String,
+      @Path("saving") savingId: Int
+   ): Call<DefaultResponse>
+
+
 
 }

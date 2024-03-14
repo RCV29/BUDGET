@@ -56,7 +56,7 @@ class Savings : AppCompatActivity() {
         fabAdd = binding.fabAdd
 
         // Initialize RecyclerView adapter and layout manager
-        adapter = SavingsAdapter(dataList)
+        adapter = SavingsAdapter(this, dataList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -70,6 +70,7 @@ class Savings : AppCompatActivity() {
             startActivity(Intent(this@Savings, AddSavings::class.java))
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         // Stop auto-refresh when activity is destroyed
@@ -101,12 +102,12 @@ class Savings : AppCompatActivity() {
                         adapter.notifyDataSetChanged()
                     }
                 } else {
-                    Toast.makeText(this@Savings, "Failed to fetch saving", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Savings, "Failed to fetch savings", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<SavingResponse>, t: Throwable) {
-                Toast.makeText(this@Savings, "Error loading saving: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Savings, "Error loading savings: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

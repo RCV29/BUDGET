@@ -1,5 +1,6 @@
 package com.visperas.rolito.block6.p1.budget_tracking.activities
 
+
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,13 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.visperas.rolito.block6.p1.budget_tracking.R
 import com.visperas.rolito.block6.p1.budget_tracking.api.RetrofitClient
-import com.visperas.rolito.block6.p1.budget_tracking.databinding.ActivityExpensesBinding
 import com.visperas.rolito.block6.p1.budget_tracking.models.Expense
 import com.visperas.rolito.block6.p1.budget_tracking.models.ExpenseResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class Expenses : AppCompatActivity() {
 
@@ -43,8 +42,7 @@ class Expenses : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityExpensesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_expenses)
 
         val toolBar = findViewById<ImageView>(R.id.left_icon)
 
@@ -53,11 +51,11 @@ class Expenses : AppCompatActivity() {
         }
 
         // Initialize views
-        recyclerView = binding.recyclerView
-        fabAdd = binding.fabAdd
+        recyclerView = findViewById(R.id.recyclerView)
+        fabAdd = findViewById(R.id.fabAdd)
 
         // Initialize RecyclerView adapter and layout manager
-        adapter = ExpenseAdapter(dataList)
+        adapter = ExpenseAdapter(this, dataList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
