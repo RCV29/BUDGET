@@ -3,6 +3,7 @@ package com.visperas.rolito.block6.p1.budget_tracking.activities
 import android.content.Context
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -22,6 +23,11 @@ class UpdateExpenseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_expense)
+        val toolBar = findViewById<ImageView>(R.id.left_icon)
+
+        toolBar.setOnClickListener {
+            onBackPressed()
+        }
 
         // Initialize Retrofit
         api = RetrofitClient.instance
