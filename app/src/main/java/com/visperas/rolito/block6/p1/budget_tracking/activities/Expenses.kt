@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,6 +46,21 @@ class Expenses : AppCompatActivity() {
         setContentView(R.layout.activity_expenses)
 
         val toolBar = findViewById<ImageView>(R.id.left_icon)
+        val menuIcon = findViewById<ImageView>(R.id.menu_icon)
+
+        menuIcon.setOnClickListener {
+            val popupMenu = PopupMenu(this@Expenses, it)
+            popupMenu.menuInflater.inflate(R.menu.menu_main, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { item ->
+                if (item.itemId == R.id.menu_logout) {
+                    startActivity(Intent(this@Expenses, MainActivity::class.java))
+                    Toast.makeText(this@Expenses, "Logged out", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                false
+            }
+            popupMenu.show()
+        }
 
         toolBar.setOnClickListener {
             onBackPressed()

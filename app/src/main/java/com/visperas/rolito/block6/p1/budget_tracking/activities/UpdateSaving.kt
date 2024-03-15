@@ -1,9 +1,11 @@
 package com.visperas.rolito.block6.p1.budget_tracking.activities
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -24,6 +26,21 @@ class UpdateSaving : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_saving)
         val toolBar = findViewById<ImageView>(R.id.left_icon)
+        val menuIcon = findViewById<ImageView>(R.id.menu_icon)
+
+        menuIcon.setOnClickListener {
+            val popupMenu = PopupMenu(this@UpdateSaving, it)
+            popupMenu.menuInflater.inflate(R.menu.menu_main, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { item ->
+                if (item.itemId == R.id.menu_logout) {
+                    startActivity(Intent(this@UpdateSaving, MainActivity::class.java))
+                    Toast.makeText(this@UpdateSaving, "Logged out", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                false
+            }
+            popupMenu.show()
+        }
 
         toolBar.setOnClickListener {
             onBackPressed()

@@ -27,12 +27,6 @@
             android:textColor="@color/white"
             android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/menu_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/baseline_more_vert_24" />
 
     </RelativeLayout>
 </RelativeLayout>

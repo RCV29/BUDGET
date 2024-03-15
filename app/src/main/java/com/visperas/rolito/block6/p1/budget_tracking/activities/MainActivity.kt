@@ -1,5 +1,6 @@
 package com.visperas.rolito.block6.p1.budget_tracking.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -84,5 +85,8 @@ class MainActivity : AppCompatActivity() {
             putString("token", token)
             apply()
         }
+    }
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
     }
 }

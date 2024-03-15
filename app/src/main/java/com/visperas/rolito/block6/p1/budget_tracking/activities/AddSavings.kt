@@ -2,11 +2,13 @@ package com.visperas.rolito.block6.p1.budget_tracking.activities
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.visperas.rolito.block6.p1.budget_tracking.R
@@ -30,6 +32,21 @@ class AddSavings : AppCompatActivity() {
         val dateEdit = findViewById<EditText>(R.id.editDate)
         val addButton = findViewById<Button>(R.id.addButton)
         val toolBar = findViewById<ImageView>(R.id.left_icon)
+        val menuIcon = findViewById<ImageView>(R.id.menu_icon)
+
+        menuIcon.setOnClickListener {
+            val popupMenu = PopupMenu(this@AddSavings, it)
+            popupMenu.menuInflater.inflate(R.menu.menu_main, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { item ->
+                if (item.itemId == R.id.menu_logout) {
+                    startActivity(Intent(this@AddSavings, MainActivity::class.java))
+                    Toast.makeText(this@AddSavings, "Logged out", Toast.LENGTH_SHORT).show()
+                    return@setOnMenuItemClickListener true
+                }
+                false
+            }
+            popupMenu.show()
+        }
 
         toolBar.setOnClickListener {
             onBackPressed()
