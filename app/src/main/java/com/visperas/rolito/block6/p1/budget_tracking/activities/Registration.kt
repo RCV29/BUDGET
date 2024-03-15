@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.visperas.rolito.block6.p1.budget_tracking.R
 import com.visperas.rolito.block6.p1.budget_tracking.api.RetrofitClient
@@ -65,11 +66,13 @@ class Registration : AppCompatActivity() {
                                 "MyTag",
                                 "Registration Success: $call"
                             )
+                            Toast.makeText(this@Registration, "Registration Success", Toast.LENGTH_SHORT).show()
 
                             startActivity(Intent(this@Registration, MainActivity::class.java))
                             finish()
                         } else {
                             Log.e("MyTag", "Registration Failed: $call || ${response.raw()}")
+                            Toast.makeText(this@Registration, "Registration Failed", Toast.LENGTH_SHORT).show()
 
                         }
                     }
